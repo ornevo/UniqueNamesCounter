@@ -1,0 +1,27 @@
+So, we need to handle a several number of scenarios:
+    1. When we have a name and a nickname
+    2. When we have a name and a shorthand
+    3. When we have a name and a typo
+
+Optional algorithms:
+    For comparing names:
+        - Levenshtein distance for typos
+        - Jaccard index which check similarity (http://matpalm.com/resemblance/jaccard_coeff/)
+     For mutating the names for comparison:
+        - The Metaphone algorithm, for transforming into how the names sound
+        - Removing nicknames' suffixes
+        - Reordering spaced words
+
+So we first make multiple versions of each name, and then we compare all of them,
+    finding the most common once and deciding upon those whether two names are the same.
+
+Examples:
+countUniqueNames("Deborah","Egli","Deborah","Egli","Deborah Egli") returns 1
+
+countUniqueNames("Deborah","Egli","Debbie","Egli","Debbie Egli") returns 1
+
+countUniqueNames("Deborah","Egni","Deborah","Egli","Deborah Egli") returns 1
+
+countUniqueNames("Deborah S","Egli","Deborah","Egli","Egli Deborah") returns 1 // TODO
+
+countUniqueNames("Michele","Egli","Deborah","Egli","Michele Egli") returns 2
